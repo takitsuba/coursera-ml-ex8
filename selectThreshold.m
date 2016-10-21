@@ -31,8 +31,10 @@ for epsilon = min(pval):stepsize:max(pval)
     fn = sum((pval >= epsilon) & (yval == 1))/size(pval,1);
 
     % PrecisionとRecallを計算
-    prec = tp ./ (tp .+ fp);
-    rec  = tp ./ (tp .+ fn);
+    % prec = tp ./ (tp .+ fp);
+    % rec  = tp ./ (tp .+ fn);
+    prec = tp / (tp + fp);
+    rec  = tp / (tp + fn);
 
     % F1を計算
     F1 = 2 * prec * rec / (prec + rec);
